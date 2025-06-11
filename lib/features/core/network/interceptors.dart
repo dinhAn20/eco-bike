@@ -1,4 +1,7 @@
 import 'package:dio/dio.dart';
+import 'package:eco_bike/features/core/keychain/shared_prefs.dart';
+import 'package:eco_bike/features/core/keychain/shared_prefs_key.dart';
+import 'package:eco_bike/injection_container.dart';
 import 'package:logger/logger.dart';
 
 class LoggerInterceptor extends Interceptor {
@@ -34,5 +37,19 @@ class LoggerInterceptor extends Interceptor {
       'Data: ${response.data}',
     ); // Debug log
     handler.next(response); // continue with the Response
+  }
+}
+
+class AuthInterceptor extends Interceptor {
+  final SharedPrefs _sharedPrefs = sl<SharedPrefs>();
+
+  @override
+  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
+    final String? token = _sharedPrefs.get(SharedPrefsKey.token);
+    if (token != null) {
+      options.headers['Authorization'] = 'Bearer $token';
+    }
+    options.headers['Accept'] = 'application/json';
+    super.onRequest(options, handler);
   }
 }

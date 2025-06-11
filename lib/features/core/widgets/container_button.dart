@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ContainerButton extends StatelessWidget {
   final VoidCallback? onTap;
   final String? title;
-  const ContainerButton({Key? key, this.title, this.onTap}) : super(key: key);
+  const ContainerButton({super.key, this.title, this.onTap});
 
   @override
   Widget build(BuildContext context) {
