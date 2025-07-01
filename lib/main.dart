@@ -1,10 +1,13 @@
-import 'package:eco_bike/common/bloc/auth%20/auth_state_cubit.dart';
+import 'package:eco_bike/common/bloc/auth/auth_state_cubit.dart';
+import 'package:eco_bike/features/app/home/bloc/user_display_cubit.dart';
 import 'package:eco_bike/features/app/home/pages/splash.dart';
+import 'package:eco_bike/features/core/const/constant.dart';
 import 'package:eco_bike/features/core/route/app_route.dart';
 import 'package:eco_bike/features/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mapbox_maps_flutter/mapbox_maps_flutter.dart';
 import './injection_container.dart' as di;
 
 void main() async {
@@ -15,6 +18,7 @@ void main() async {
       systemNavigationBarColor: Colors.black,
     ),
   );
+  MapboxOptions.setAccessToken(ACCESS_TOKEN);
   await di.init();
   runApp(const MyApp());
 }
@@ -25,7 +29,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (_) => di.sl<AuthStateCubit>())],
+      providers: [
+        BlocProvider(create: (_) => di.sl<AuthStateCubit>()),
+        BlocProvider(create: (_) => di.sl<UserDisplayCubit>()..displayUser()),
+      ],
       child: MaterialApp(
         title: 'Eco Bike',
         theme: AppTheme.appTheme,

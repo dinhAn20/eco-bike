@@ -1,5 +1,5 @@
-import 'package:eco_bike/common/bloc/auth%20/auth_state.dart';
-import 'package:eco_bike/common/bloc/auth%20/auth_state_cubit.dart';
+import 'package:eco_bike/common/bloc/auth/auth_state.dart';
+import 'package:eco_bike/common/bloc/auth/auth_state_cubit.dart';
 import 'package:eco_bike/features/app/home/pages/home.dart';
 import 'package:eco_bike/features/auth/presentation/pages/signin.dart';
 import 'package:eco_bike/injection_container.dart';
@@ -40,7 +40,7 @@ class _SplashPageState extends State<SplashPage> {
           );
         }
       },
-      // listenWhen: (previous, current) => previous != current,
+      listenWhen: (previous, current) => previous != current,
       child: Scaffold(body: Center(child: CircularProgressIndicator())),
     );
   }

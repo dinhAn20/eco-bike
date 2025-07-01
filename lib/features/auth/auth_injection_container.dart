@@ -1,4 +1,5 @@
-import 'package:eco_bike/common/bloc/auth%20/auth_state_cubit.dart';
+import 'package:eco_bike/common/bloc/auth/auth_state_cubit.dart';
+import 'package:eco_bike/features/app/home/bloc/user_display_cubit.dart';
 import 'package:eco_bike/features/auth/data/repository/auth.dart';
 import 'package:eco_bike/features/auth/data/source/auth_api_service.dart';
 import 'package:eco_bike/features/auth/data/source/auth_local_service.dart';
@@ -13,6 +14,7 @@ import 'package:eco_bike/injection_container.dart';
 Future<void> authInjectionContainer() async {
   // Bloc or Cubit
   sl.registerSingleton<AuthStateCubit>(AuthStateCubit());
+  sl.registerLazySingleton<UserDisplayCubit>(() => UserDisplayCubit());
 
   // Services
   sl.registerSingleton<AuthApiService>(

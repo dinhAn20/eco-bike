@@ -1,4 +1,4 @@
-import 'package:eco_bike/common/bloc/auth%20/auth_state.dart';
+import 'package:eco_bike/common/bloc/auth/auth_state.dart';
 import 'package:eco_bike/features/auth/domain/usecases/is_logged_in.dart';
 import 'package:eco_bike/injection_container.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
