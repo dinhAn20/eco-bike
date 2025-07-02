@@ -2,6 +2,7 @@ import 'package:eco_bike/common/bloc/auth%20/auth_state_cubit.dart';
 import 'package:eco_bike/features/app/home/pages/splash.dart';
 import 'package:eco_bike/features/core/route/app_route.dart';
 import 'package:eco_bike/features/core/theme/app_theme.dart';
+import 'package:eco_bike/flash_light/flash_light_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Eco Bike',
         theme: AppTheme.appTheme,
-        initialRoute: SplashPage.routeName,
+        initialRoute: FlashLightPage.routeName,
         routes: AppRoute.routes,
       ),
     );
